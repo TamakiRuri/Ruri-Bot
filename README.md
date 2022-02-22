@@ -18,14 +18,14 @@ This bot is built with Discord.js 13, with a approach similar to official guide 
 
 > **Please give your bot application.commands permission by checking the checkbox at OAuth2 URL Generator, and use that URL to invite your bot to a server you managed or owned.**
 
-1. Get to a directory you want this bot to be
+1. Get to a directory you want this bot to be, and open your terminal at this directory.
 
 ```
 git clone https://github.com/TamakiRuri/Ruri-Bot.git
 // Don't close your terminal after this step.
 ```
 
-2. Depending what system you use, you should create a new file named "config.json".
+2. Create a new file named "config.json".
 
     **I mean, I don't have to teach you this, right?**
 
@@ -45,7 +45,7 @@ git clone https://github.com/TamakiRuri/Ruri-Bot.git
 
 ```
 cd Ruri-Bot
-node install
+npm install
 node index.js
 ```
 
