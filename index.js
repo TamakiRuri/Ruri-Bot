@@ -16,6 +16,13 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
+// read avatar commands
+const avatarCommandFiles = fs.readdirSync('./commands/avatars').filter(file => file.endsWith('.js'));
+for (const file of avatarCommandFiles) {
+	const command = require(`./commands/avatars/${file}`);
+	client.commands.set(command.name, command);
+}
+
 // deploy commands to Discord server
 const rest = new REST({ version: '9' }).setToken(config.token);
 
