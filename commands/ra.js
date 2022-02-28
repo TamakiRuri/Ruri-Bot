@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 module.exports = {
-	name: 'random_avatar',
+	name: 'ra',
 	description:'誰が出てくるかな～🍣',
 	async execute(interaction){
         const avatarCommandFiles = fs.readdirSync('./commands/avatars').filter(file => file.endsWith('.js'));

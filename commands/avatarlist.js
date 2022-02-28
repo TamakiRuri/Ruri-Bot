@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 module.exports = {
-	name: 'avatarhelp',
+	name: 'avatarlist',
 	description:'アバターコマンドーのリストにゃ!🍡',
 	async execute(interaction){
         let str = 'アバターコマンドーのリストにゃ!🍡 \n';
