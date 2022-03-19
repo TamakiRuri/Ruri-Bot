@@ -10,10 +10,16 @@ module.exports = {
             const command = require(`./${file}`);
             switch(command.name){
                 case 'go':
-                    str += `/${command.name}    ランダムワールド推薦にゃ!✨ \n`
+                    str += `/${command.name}    ランダムワールドにゃ!✨ \n`
                     break;
                 case 'ra':
-                    str += `/${command.name}    ランダムアバター推薦にゃ!🍣 \n`
+                    str += `/${command.name}    ランダムアバターにゃ!🍣 \n`
+                    break;
+                case 'wear':
+                    str += `/${command.name}    ランダム衣装にゃ！🧥 \n`
+                    break;
+                case 'tutorial':
+                    str += `/${command.name}    アバター改変チュートリアルのリストにゃ！🔧`
                     break;
                 default:
                     str += `/${command.name}    ${command.description} \n`;
