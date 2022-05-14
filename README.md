@@ -1,8 +1,10 @@
 ## Ruri Bot
 
-**Ruri Bot is a VRChat Avatar bot that can recommand avatars from shopping sites to players.**
+**Ruri Bot is designed for VRChat related servers. It can recommand avatars from shopping sites, worlds, and tutorials.**
 
-This bot is built with Discord.js 13, with a approach similar to official guide without using builders. 
+This bot is built with Discord.js 13, with a approach similar to official guide without using builders.
+
+It will register commmands everytime you start this bot. This isn't the best choice for sure, but because this bot's commands are restricted to **slash commands**, it's the only way to register it without using a separate file (for now).
 
 ---
 
@@ -35,11 +37,10 @@ git clone https://github.com/TamakiRuri/Ruri-Bot.git
 {
     "clientId": "Your bot's Client ID",
     "guildId": "Your Discord server's ID",
-    "channelId": "The ID of the channel you want this bot to speak",
     "token": "Your token"
 }
 ```
-**Channel ID is not functional for now**
+**You can restrict bot's channel inside your server setting, so channel id function is removed**
 
 1. At your terminal, input following commands.
 
