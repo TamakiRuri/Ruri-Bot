@@ -1,12 +1,10 @@
-console.log('Nyaaaaaaaaaa! This is Ruri Bot Nya!🐱');
+console.log('This is Ruri Bot!');
 
 const fs = require("fs");
 const config = require("./config.json");
-const {Client, Collection, Intents, Message, Guild} = require('discord.js');
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v9');
+const {Routes, REST, Client, Collection, GatewayIntentBits, Message, Guild} = require('discord.js');
 
-const client = new Client({intents: [Intents.FLAGS.GUILDS]});
+const client = new Client({intents: [GatewayIntentBits.Guilds]});
 client.commands = new Collection();
 
 // Read commands from ./commands
@@ -16,18 +14,28 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-// read avatar commands
+// read avatar commands (deprecated)
+/*
 const avatarCommandFiles = fs.readdirSync('./commands/avatars').filter(file => file.endsWith('.js'));
 for (const file of avatarCommandFiles) {
 	const command = require(`./commands/avatars/${file}`);
 	client.commands.set(command.name, command);
 }
+*/
 
-// deploy commands to Discord server
+// Regesiter token for applying commands
 const rest = new REST({ version: '9' }).setToken(config.token);
 
-rest.put(Routes.applicationGuildCommands(config.clientId, config.guildId), { body: client.commands })
-	.then(() => console.log('Successfully registered application commands Nya!🪟'))
+// Clean up old guild specific commands
+if (config.guildId != ''){
+	rest.put(Routes.applicationGuildCommands(config.clientId, config.guildId), { body:[]})
+	.then(() => console.log('Successfully deleted guild commands!'))
+	.catch(console.error);
+}
+
+// Apply commands
+rest.put(Routes.applicationCommands(config.clientId), { body: client.commands })
+	.then(() => console.log('Successfully registered application commands!'))
 	.catch(console.error);
 
 // Read event handlers from ./events
@@ -41,15 +49,17 @@ for (const file of eventFiles) {
 	}
 }
 
+
+// Call functions when an interaction happened
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) {
-		console.log("Not a command Nya!");
+		console.log("The interaction is not a command!");
 		return;
 	}
 	const command = client.commands.get(interaction.commandName);
 
 	if (!command) {
-		console.log("Command not true Nya!")
+		console.log("Command is not true!");
 		return;
 	}
 
@@ -57,7 +67,7 @@ client.on('interactionCreate', async interaction => {
 		await command.execute(interaction);
 	} catch (error) {
 		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command Nya!❌', ephemeral: true });
+		await interaction.reply({ content: 'このコマンドを実行するときにエラーが発生しました!❌', ephemeral: true });
 	}
 });
 

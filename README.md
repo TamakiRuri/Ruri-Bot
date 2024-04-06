@@ -1,55 +1,65 @@
 ## Ruri Bot
 
-**Ruri Bot is designed for VRChat related servers. It can recommand avatars from shopping sites, worlds, and tutorials.**
+**Ruri BotはVRChat関連のDiscordサーバー向けのBotです（Alpha）**
 
-This bot is built with Discord.js 13, with a approach similar to official guide without using builders.
-
-It will register commmands everytime you start this bot. This isn't the best choice for sure, but because this bot's commands are restricted to **slash commands**, it's the only way to register it without using a separate file (for now).
+このBotはDiscord js v14を利用します。利用するにはgitとNode JSが必要です。
 
 ---
 
-> **Important Notice**: This bot is not finished. Even though you can (somehow) get some testing results, the results are not granted and may be very wrong. このBOTはまだ完成されていません。
+> **注意**: このBotはまだ完成していません。
 
+### **機能**:
+
+- **ランダムワールド** (./commands/json/worlds.jsonにリンクの追加が必要です。)
+- **ランダム衣装** (./commands/json/costume.jsonにリンクの追加が必要です。)
+- **改変チュートリアル** (未実装)
+- **ランダム機能** 4つの選択肢からランダムに一つを選ぶ機能です
 ---
 
-### Installation Guide
+### インストール
 
-**Require Node.js 16.6.0 or after.**
+**Node.js 16.11.0 以降が必要です**
 
-> Before downloading this bot files, you should create your own bot application and bot at [Discord Developer Portal](https://discord.com/developers/applications), and get your client ID and token.
+### このBotを利用する前に、Discord Developer PortalにApplicationとBotを作る必要があります。[Discord Developer Portal](https://discord.com/developers/applications)作ったあとにtokenとClient IDを保存します（tokenは公開しないでください）。
 
-> **Please give your bot application.commands permission by checking the checkbox at OAuth2 URL Generator, and use that URL to invite your bot to a server you managed or owned.**
+### OAuth2 でApplication.Commandを選択し、生成したURLでBotを管理しているサーバーにインバイトしてください。
 
-1. Get to a directory you want this bot to be, and open your terminal at this directory.
+1. Botを保存したいディレクトリに移動し、ターミナルを開きます。
 
 ```
 git clone https://github.com/TamakiRuri/Ruri-Bot.git
-// Don't close your terminal after this step.
 ```
 
-2. Create a new file named "config.json".
+2. config.jsonを作ります。
 
-    **I mean, I don't have to teach you this, right?**
+```
+cp config.json.example config.json
+```
 
-3. Edit config.json
+3. config.jsonを編集します。
 
 ```
 {
-    "clientId": "Your bot's Client ID",
-    "guildId": "Your Discord server's ID",
-    "token": "Your token"
+    "clientId": "BotのClient ID",
+    "guildId": "", //すでに破棄されました。初めて使用する場合何も入力しないでください。古いバージョンを使う場合は一回動かしてから消してください。
+    "token": "BotのToken"
 }
 ```
-**You can restrict bot's channel inside your server setting, so channel id function is removed**
 
-1. At your terminal, input following commands.
+4. Botを動かします。
 
 ```
-cd Ruri-Bot
 npm install
 node index.js
 ```
 
-5. Now the Bot is running. Every time you start this bot, it will deploy commands automatically, so you don't need to worry about changing commands or ongoing changes about GUILDS_MESSAGE.
+5. もしLogged Inというメセージがターミナルで出たら完成です。エラーが出た場合はconfig.jsonに問題があるか見てください。Ctrl + Cを同時に押すとBotが終了します。
 
-6. How to stop this bot? Simply ctrl + C to stop it.
+> 他になにか問題がある場合、Issuesに書いてくれると助かります。
+
+
+### 0.2.1から更新する方へ
+
+1. アバター機能が削除されました。
+2. 一部のコマンドが変更されました。
+3. コマンドの登録が Guildからグローバルになりました。一回動かしてからconfig.jsonからGuildIdを消してください。

@@ -1,7 +1,7 @@
 module.exports = {
 	name:'nya',
-	description:'にゃー!🐱',
+	description:'にゃー!',
 	async execute(interaction){
-		await interaction.reply('にゃー!🐱');
+		await interaction.reply('にゃー!');
 	},
 };

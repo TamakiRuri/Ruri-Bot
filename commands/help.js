@@ -2,24 +2,24 @@ const fs = require('fs');
 
 module.exports = {
 	name: 'help',
-	description:'コマンドリストにゃ！📝',
+	description:'コマンドリスト📝',
 	async execute(interaction){
-        let str = 'Ruri Bot コマンドリストにゃ！📖 \n';
+        let str = 'コマンドリスト📖 \n';
         const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
         for (const file of commandFiles){
             const command = require(`./${file}`);
             switch(command.name){
-                case 'go':
-                    str += `/${command.name}    ランダムワールドにゃ!✨ \n`
+                case 'world':
+                    str += `/${command.name}    ランダムワールド!✨ \n`
                     break;
-                case 'ra':
-                    str += `/${command.name}    ランダムアバターにゃ!🍣 \n`
+                case 'costume':
+                    str += `/${command.name}    ランダム衣装!✨ \n`
                     break;
-                case 'wear':
-                    str += `/${command.name}    ランダム衣装にゃ！🧥 \n`
+                case 'select':
+                    str += `/${command.name}    使い方：/select [A] [B] [C] [D]、最大４つの中からランダムに一つを選ぶ！🏵️ \n`
                     break;
                 case 'tutorial':
-                    str += `/${command.name}    アバター改変チュートリアルのリストにゃ！🔧`
+                    str += `/${command.name}    アバター改変チュートリアルのリスト！🔧`
                     break;
                 default:
                     str += `/${command.name}    ${command.description} \n`;

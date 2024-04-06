@@ -1,7 +1,7 @@
 module.exports = {
 	name:'tutorial',
-	description:'アバター改変のチュートリアルにゃ！🥯(WIP)',
+	description:'アバター改変のチュートリアル！🥯(WIP)',
 	async execute(interaction){
-		await interaction.reply({content: 'この機能はまだ動作していませんにゃ！⚡', ephemeral: true });
+		await interaction.reply({content: 'この機能はまだ実装してない！⚡', ephemeral: true });
     }
 };
