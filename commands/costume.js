@@ -5,6 +5,7 @@ module.exports = {
         const costume = require("./json/costume.json");
         const randomIndex = Math.floor(Math.random() * costume.costumes.length);
         const str = costume.costumes[randomIndex];
+		console.log('Command \' Costume \' used in Server '+ interaction.guild.toString());
 		await interaction.reply(str);
 	},
 };

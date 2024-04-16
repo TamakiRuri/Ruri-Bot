@@ -37,6 +37,7 @@ module.exports = {
 		}
 		let out = 'str'.concat(Math.floor(Math.random()*count)+1);
 		let outstr = interaction.options.getString(out);
+		console.log('Command \' Select \' used in Server '+ interaction.guild.toString());
 		await interaction.reply(outstr);
 	},
 };

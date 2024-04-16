@@ -4,8 +4,11 @@ const fs = require("fs");
 const config = require("./config.json");
 const {Routes, REST, Client, Collection, GatewayIntentBits, Message, Guild} = require('discord.js');
 
-const client = new Client({intents: [GatewayIntentBits.Guilds]});
+const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates]});
 client.commands = new Collection();
+
+global.channelMap = new Map();
+global.vcTimeMap = new Map();
 
 // Read commands from ./commands
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));

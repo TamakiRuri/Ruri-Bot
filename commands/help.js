@@ -19,13 +19,14 @@ module.exports = {
                     str += `/${command.name}    使い方：/select [A] [B] [C] [D]、最大４つの中からランダムに一つを選ぶ！🏵️ \n`
                     break;
                 case 'tutorial':
-                    str += `/${command.name}    アバター改変チュートリアルのリスト！🔧`
+                    str += `/${command.name}    アバター改変チュートリアルのリスト！🔧\n`
                     break;
                 default:
                     str += `/${command.name}    ${command.description} \n`;
                     break;
             }
         }
+        console.log('Command \' Help \' used in Server '+ interaction.guild.toString());
 		await interaction.reply(str);
 	},
 };
